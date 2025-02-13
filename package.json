@@ -1,0 +1,20 @@
+{
+  "name": "forkify",
+  "version": "1.0.0",
+  "description": "Aplicacion para control de recetas de restaurantes ",
+  "homepage": "https://github.com/Diego-9612/Forkify#readme",
+  "bugs": {
+    "url": "https://github.com/Diego-9612/Forkify/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Diego-9612/Forkify.git"
+  },
+  "license": "ISC",
+  "author": "Diego Fernando Guerrero Perez Codeweb Studio",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
