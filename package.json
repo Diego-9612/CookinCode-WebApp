@@ -13,8 +13,12 @@
   "license": "ISC",
   "author": "Diego Fernando Guerrero Perez Codeweb Studio",
   "type": "commonjs",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.13.3",
+    "parcel": "^2.13.3"
   }
 }
