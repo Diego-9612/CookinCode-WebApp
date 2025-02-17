@@ -1,10 +1,10 @@
 import * as modelo from './modelo'
 import vistaReceta from './vistas/vistaReceta'
+import vistaBusquedas from './vistas/vistaBusquedas';
+import vistaResultados from './vistas/vistaResultados';
 
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
-
-const recipeContainer = document.querySelector('.recipe');
 
 ///////////////////////////////////////
 
@@ -24,14 +24,35 @@ const controladorRecetas = async function () {
     // 2. Maquetar la informacion de la receta en el HTML
     vistaReceta.render(modelo.estado.receta);
 
-
-
   } catch (err) {
-    alert(err)
+    vistaReceta.renderMensaje();
   };
 
 };
 
-['hashchange', 'load'].forEach(ev => window.addEventListener(ev, controladorRecetas));
+const controladorBuscarResultados = async function(){
+  try{
+
+    vistaResultados.renderSpinner();
+
+    const consulta = vistaBusquedas.getConsulta();
+    if(!consulta) return; 
+
+    await modelo.cargarBuscarReceta(consulta);
+    vistaResultados.render(modelo.estado.buscar.resultados)
+
+  } catch (err) {
+    console.error(err);
+  };
+};
+
+controladorBuscarResultados();
+
+const init = function (){
+  vistaReceta.addHandlerRender(controladorRecetas);
+  vistaBusquedas.addHandlerSearch(controladorBuscarResultados);
+};
+
+init();
 
 

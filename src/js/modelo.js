@@ -5,7 +5,11 @@ import { getJSON } from "./ayudantes";
 
 export const estado = {
     receta: {},
-}
+    buscar: {
+        consulta: '',
+        resultados: [],
+    },
+};
 
 export const cargarReceta = async function (id) {
 
@@ -27,7 +31,32 @@ export const cargarReceta = async function (id) {
         };
 
     } catch (err) {
-        console.error(`${err}`);
+        throw err;
     };
 
-}
+};
+
+export const cargarBuscarReceta = async function (consulta) {
+
+    try {
+
+        estado.buscar.consulta = consulta;
+
+        const data = await getJSON(`${API_URL}?search=${consulta}`);
+        estado.buscar.resultados = data.data.recipes.map(rec => {
+            return {
+                id: rec.id,
+                titulo: rec.title,
+                publisher: rec.publisher,
+                imagen: rec.image_url,
+            };
+        });
+
+    } catch (err) {
+        throw err;
+    };
+
+};
+
+cargarBuscarReceta('pizza');
+

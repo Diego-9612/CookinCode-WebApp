@@ -1,3 +1,4 @@
+import { async } from "regenerator-runtime";
 import { TIMEOUT_SEC } from "./configuraciones";
 
 const timeout = function (s) {
