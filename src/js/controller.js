@@ -47,18 +47,23 @@ const controladorBuscarResultados = async function () {
     await modelo.cargarBuscarReceta(consulta);
     vistaResultados.render(modelo.getPaginaResultadosBusqueda())
 
-    vistaPaginacion.render(modelo.estado.buscar)
+    VistaPaginacion.render(modelo.estado.buscar)
 
   } catch (err) {
     console.error(err);
   };
 };
 
-controladorBuscarResultados();
+const controlPaginacion = function(goToPage){
+  vistaResultados.render(modelo.getPaginaResultadosBusqueda(goToPage));
+
+  VistaPaginacion.render(modelo.estado.buscar);
+}
 
 const init = function (){
   vistaReceta.addHandlerRender(controladorRecetas);
   vistaBusquedas.addHandlerSearch(controladorBuscarResultados);
+  vistaPaginacion.addHandlerClick(controlPaginacion);
 };
 
 init();
