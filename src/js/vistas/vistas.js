@@ -4,6 +4,8 @@ export default class Vistas{
     _data;
 
     render(data) {
+
+        if(!data || (Array.isArray(data) && data.length === 0)) return this.renderMensaje();
             this._data = data;
             const margen = this._generarMargen();
             this._limpiar();

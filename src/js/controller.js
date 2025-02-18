@@ -2,11 +2,17 @@ import * as modelo from './modelo'
 import vistaReceta from './vistas/vistaReceta'
 import vistaBusquedas from './vistas/vistaBusquedas';
 import vistaResultados from './vistas/vistaResultados';
+import VistaPaginacion from './vistas/vistaPaginacion';
 
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
+import vistaPaginacion from './vistas/vistaPaginacion';
 
 ///////////////////////////////////////
+
+if (modelo.hot){
+  modelo.hot.accept();
+}
 
 const controladorRecetas = async function () {
 
@@ -30,16 +36,18 @@ const controladorRecetas = async function () {
 
 };
 
-const controladorBuscarResultados = async function(){
+const controladorBuscarResultados = async function () {
   try{
-
-    vistaResultados.renderSpinner();
 
     const consulta = vistaBusquedas.getConsulta();
     if(!consulta) return; 
 
+    vistaResultados.renderSpinner();
+
     await modelo.cargarBuscarReceta(consulta);
-    vistaResultados.render(modelo.estado.buscar.resultados)
+    vistaResultados.render(modelo.getPaginaResultadosBusqueda())
+
+    vistaPaginacion.render(modelo.estado.buscar)
 
   } catch (err) {
     console.error(err);

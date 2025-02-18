@@ -1,5 +1,5 @@
 import { async } from "regenerator-runtime";
-import { API_URL } from "./configuraciones";
+import { API_URL, RES_PER_PAGE } from "./configuraciones";
 import { getJSON } from "./ayudantes";
 
 
@@ -8,6 +8,8 @@ export const estado = {
     buscar: {
         consulta: '',
         resultados: [],
+        pagina: 1,
+        resultadosPagina: RES_PER_PAGE,
     },
 };
 
@@ -58,5 +60,13 @@ export const cargarBuscarReceta = async function (consulta) {
 
 };
 
-cargarBuscarReceta('pizza');
+export const getPaginaResultadosBusqueda = function(pagina = estado.buscar.pagina){
+
+    estado.buscar.pagina = pagina;
+
+    const inicio = (pagina - 1) * estado.buscar.resultadosPagina;
+    const fin = pagina * estado.buscar.resultadosPagina;
+
+    return estado.buscar.resultados.slice(inicio, fin);
+};
 
