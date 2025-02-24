@@ -14,10 +14,12 @@ class VistaResultados extends Vistas {
 
     _generarVistaPreviaMargen(resultados){
 
+        const id = window.location.hash.slice(1);
+        
         return `
         
         <li class="preview">
-            <a class="preview__link" href="#${resultados.id}">
+            <a class="preview__link ${resultados.id === id ? 'preview__link--active' : ''}"  href="#${resultados.id}">
                 <figure class="preview__fig">
                     <img src="${resultados.imagen}" alt="${resultados.titulo}" />
                 </figure>

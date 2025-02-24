@@ -60,7 +60,7 @@ export const cargarBuscarReceta = async function (consulta) {
 
 };
 
-export const getPaginaResultadosBusqueda = function(pagina = estado.buscar.pagina){
+export const getPaginaResultadosBusqueda = function (pagina = estado.buscar.pagina) {
 
     estado.buscar.pagina = pagina;
 
@@ -68,5 +68,16 @@ export const getPaginaResultadosBusqueda = function(pagina = estado.buscar.pagin
     const fin = pagina * estado.buscar.resultadosPagina;
 
     return estado.buscar.resultados.slice(inicio, fin);
+};
+
+export const actualizarPorciones = function (newPorcion) {
+
+    estado.receta.ingredients.forEach(ing => {
+        ing.quantity = (ing.quantity * newPorcion) / estado.receta.servings;
+
+    });
+
+    estado.receta.servings = newPorcion;
+
 };
 

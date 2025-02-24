@@ -10,7 +10,7 @@ import vistaPaginacion from './vistas/vistaPaginacion';
 
 ///////////////////////////////////////
 
-if (modelo.hot){
+if (modelo.hot) {
   modelo.hot.accept();
 }
 
@@ -22,6 +22,9 @@ const controladorRecetas = async function () {
     if (!id) return;
 
     vistaReceta.renderSpinner();
+
+    //Actualizar resultados y marcar el elemento de la busqueda
+    vistaResultados.actualizar(modelo.getPaginaResultadosBusqueda());
 
     // 1. Cargar informacion de la receta
 
@@ -37,10 +40,10 @@ const controladorRecetas = async function () {
 };
 
 const controladorBuscarResultados = async function () {
-  try{
+  try {
 
     const consulta = vistaBusquedas.getConsulta();
-    if(!consulta) return; 
+    if (!consulta) return;
 
     vistaResultados.renderSpinner();
 
@@ -54,16 +57,27 @@ const controladorBuscarResultados = async function () {
   };
 };
 
-const controlPaginacion = function(goToPage){
+const controlPaginacion = function (goToPage) {
   vistaResultados.render(modelo.getPaginaResultadosBusqueda(goToPage));
 
   VistaPaginacion.render(modelo.estado.buscar);
 }
 
-const init = function (){
+const controlPorciones = function (newPorcion) {
+
+  //Actualizar el numero de porciones
+  modelo.actualizarPorciones(newPorcion);
+
+  //Actualizar la vista 
+  vistaReceta.actualizar(modelo.estado.receta);
+
+};
+
+const init = function () {
   vistaReceta.addHandlerRender(controladorRecetas);
   vistaBusquedas.addHandlerSearch(controladorBuscarResultados);
   vistaPaginacion.addHandlerClick(controlPaginacion);
+  vistaReceta.addHandlerActualizarPorciones(controlPorciones);
 };
 
 init();
