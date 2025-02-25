@@ -117,7 +117,6 @@ const init = function(){
 };
 
 init();
-console.log(estado.marcadores);
 
 const limpiarMarcadores = function(){
     localStorage.clear('marcadoresRecetas');

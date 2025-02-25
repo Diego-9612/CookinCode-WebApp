@@ -4,6 +4,7 @@ import vistaBusquedas from './vistas/vistaBusquedas';
 import vistaResultados from './vistas/vistaResultados';
 import VistaPaginacion from './vistas/vistaPaginacion';
 import vistaMarcadores from './vistas/vistaMarcadores';
+import vistaCrearReceta from './vistas/vistaCrearReceta';
 
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
@@ -87,7 +88,12 @@ const controlAgregarMarcarReceta = function(){
 
 const controlMarcadores = function(){
   vistaMarcadores.render(modelo.estado.marcadores);
-}
+};
+
+const controlCrearReceta = function(newReceta){
+  console.log(newReceta);
+
+};
 
 const init = function () {
   vistaMarcadores.addHandlerRender(controlMarcadores);
@@ -96,6 +102,7 @@ const init = function () {
   vistaPaginacion.addHandlerClick(controlPaginacion);
   vistaReceta.addHandlerActualizarPorciones(controlPorciones);
   vistaReceta.addHandlerAgregarMarcarReceta(controlAgregarMarcarReceta);
+  vistaCrearReceta.addHandlerEnviarFormulario(controlCrearReceta);
 };
 
 init();
