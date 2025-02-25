@@ -3,6 +3,7 @@ import vistaReceta from './vistas/vistaReceta'
 import vistaBusquedas from './vistas/vistaBusquedas';
 import vistaResultados from './vistas/vistaResultados';
 import VistaPaginacion from './vistas/vistaPaginacion';
+import vistaMarcadores from './vistas/vistaMarcadores';
 
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
@@ -25,6 +26,7 @@ const controladorRecetas = async function () {
 
     //Actualizar resultados y marcar el elemento de la busqueda
     vistaResultados.actualizar(modelo.getPaginaResultadosBusqueda());
+    vistaMarcadores.actualizar(modelo.estado.marcadores);
 
     // 1. Cargar informacion de la receta
 
@@ -73,11 +75,27 @@ const controlPorciones = function (newPorcion) {
 
 };
 
+const controlAgregarMarcarReceta = function(){
+
+  if(!modelo.estado.receta.marcador) modelo.marcarReceta(modelo.estado.receta);
+  else modelo.desmarcarReceta(modelo.estado.receta.id);
+  
+  vistaReceta.actualizar(modelo.estado.receta);
+  
+  vistaMarcadores.render(modelo.estado.marcadores);
+};
+
+const controlMarcadores = function(){
+  vistaMarcadores.render(modelo.estado.marcadores);
+}
+
 const init = function () {
+  vistaMarcadores.addHandlerRender(controlMarcadores);
   vistaReceta.addHandlerRender(controladorRecetas);
   vistaBusquedas.addHandlerSearch(controladorBuscarResultados);
   vistaPaginacion.addHandlerClick(controlPaginacion);
   vistaReceta.addHandlerActualizarPorciones(controlPorciones);
+  vistaReceta.addHandlerAgregarMarcarReceta(controlAgregarMarcarReceta);
 };
 
 init();

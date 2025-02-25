@@ -10,7 +10,9 @@ export const estado = {
         resultados: [],
         pagina: 1,
         resultadosPagina: RES_PER_PAGE,
+
     },
+    marcadores: [],
 };
 
 export const cargarReceta = async function (id) {
@@ -31,6 +33,10 @@ export const cargarReceta = async function (id) {
             cookingTime: recipe.cooking_time,
             ingredients: recipe.ingredients,
         };
+
+        if (estado.marcadores.some(marcador => marcador.id === id))
+            estado.receta.marcador = true;
+        else estado.receta.marcador = false;
 
     } catch (err) {
         throw err;
@@ -53,6 +59,7 @@ export const cargarBuscarReceta = async function (consulta) {
                 imagen: rec.image_url,
             };
         });
+        estado.buscar.pagina = 1;
 
     } catch (err) {
         throw err;
@@ -80,4 +87,40 @@ export const actualizarPorciones = function (newPorcion) {
     estado.receta.servings = newPorcion;
 
 };
+
+const almacenarMarcadoresRecetas = function(){
+
+    localStorage.setItem('marcadoresRecetas', JSON.stringify(estado.marcadores));
+
+}
+
+export const marcarReceta = function (receta) {
+
+    estado.marcadores.push(receta);
+
+    if (receta.id === estado.receta.id) estado.receta.marcador = true;
+
+    almacenarMarcadoresRecetas();
+};
+
+export const desmarcarReceta = function(id){
+    const index = estado.marcadores.findIndex(el => el.id === id);
+    estado.marcadores.splice(index, 1);
+    if (id === estado.receta.id) estado.receta.marcador = false;
+
+    almacenarMarcadoresRecetas();
+};
+
+const init = function(){
+    const AlmacenamientoLocal = localStorage.getItem('marcadoresRecetas');
+    if(AlmacenamientoLocal) estado.marcadores = JSON.parse(AlmacenamientoLocal);
+};
+
+init();
+console.log(estado.marcadores);
+
+const limpiarMarcadores = function(){
+    localStorage.clear('marcadoresRecetas');
+};
+
 

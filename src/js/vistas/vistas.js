@@ -3,11 +3,16 @@ export default class Vistas {
 
     _data;
 
-    render(data) {
+    render(data, render = true) {
 
         if (!data || (Array.isArray(data) && data.length === 0)) return this.renderMensaje();
+
         this._data = data;
+        
         const margen = this._generarMargen();
+
+        if(!render) return margen;
+
         this._limpiar();
         this._elementoPadre.insertAdjacentHTML('afterbegin', margen);
     };

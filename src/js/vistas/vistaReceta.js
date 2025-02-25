@@ -1,24 +1,32 @@
 
 import Vistas from './vistas';
 import icons from 'url:../../img/icons.svg';
-import {Fraction} from 'fractional';
+import { Fraction } from 'fractional';
 
-class VistaReceta extends Vistas{
+class VistaReceta extends Vistas {
     _elementoPadre = document.querySelector('.recipe');
     _data;
     _mensajeError = ' We could not find that recipe. Please try again';
     _mensaje = '';
 
-    addHandlerRender(handler){
+    addHandlerRender(handler) {
         ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
     };
 
-    addHandlerActualizarPorciones(handler){
-        this._elementoPadre.addEventListener('click', function(e){
+    addHandlerActualizarPorciones(handler) {
+        this._elementoPadre.addEventListener('click', function (e) {
             const btn = e.target.closest('.btn--update-servings');
-            if(!btn) return;
+            if (!btn) return;
             const { updateTo } = btn.dataset;
             if (+updateTo > 0) handler(+updateTo);
+        });
+    };
+
+    addHandlerAgregarMarcarReceta(handler) {
+        this._elementoPadre.addEventListener('click', function (e) {
+            const btn = e.target.closest('.btn--bookmark');
+            if (!btn) return;
+            handler();
         });
     };
 
@@ -62,9 +70,9 @@ class VistaReceta extends Vistas{
             </div>
             <div class="recipe__user-generated">
             </div>
-            <button class="btn--round">
+            <button class="btn--round btn--bookmark">
                 <svg class="">
-                    <use href="${icons}#icon-bookmark-fill"></use>
+                    <use href="${icons}#icon-bookmark${this._data.marcador ? '-fill' : ''}"></use>
                 </svg>
             </button>
         </div>
@@ -92,8 +100,8 @@ class VistaReceta extends Vistas{
     `;
     };
 
-    _generarMargenIngrediente(ingrediente){
-            return `
+    _generarMargenIngrediente(ingrediente) {
+        return `
                 <li class="recipe__ingredient">
                     <svg class="recipe__icon">
                         <use href="${icons}#icon-check"></use>
