@@ -3,6 +3,7 @@ import icons from 'url:../../img/icons.svg';
 
 class VistaCrearReceta extends Vistas {
     _elementoPadre = document.querySelector('.upload');
+    _mensaje = 'Receta creada con exito';
 
     _window = document.querySelector('.add-recipe-window');
     _overlay = document.querySelector('.overlay');

@@ -1,6 +1,6 @@
 import { async } from "regenerator-runtime";
-import { API_URL, RES_PER_PAGE } from "./configuraciones";
-import { getJSON } from "./ayudantes";
+import { API_URL, RES_PER_PAGE, KEY } from "./configuraciones";
+import { getJSON, enviarJSON } from "./ayudantes";
 
 
 export const estado = {
@@ -15,24 +15,28 @@ export const estado = {
     marcadores: [],
 };
 
+const crearObjetoReceta = function(data){
+
+    const { recipe } = data.data;
+    return {
+        id: recipe.id,
+        titulo: recipe.title,
+        publisher: recipe.publisher,
+        sourceUrl: recipe.source_url,
+        imagen: recipe.image_url,
+        servings: recipe.servings,
+        cookingTime: recipe.cooking_time,
+        ingredients: recipe.ingredients,
+        ...(recipe.key && {key : recipe.key})
+    };
+};
+
 export const cargarReceta = async function (id) {
 
     try {
-
         const data = await getJSON(`${API_URL}/${id}`);
 
-        const { recipe } = data.data;
-
-        estado.receta = {
-            id: recipe.id,
-            titulo: recipe.title,
-            publisher: recipe.publisher,
-            sourceUrl: recipe.source_url,
-            imagen: recipe.image_url,
-            servings: recipe.servings,
-            cookingTime: recipe.cooking_time,
-            ingredients: recipe.ingredients,
-        };
+        estado.receta = crearObjetoReceta(data);
 
         if (estado.marcadores.some(marcador => marcador.id === id))
             estado.receta.marcador = true;
@@ -121,5 +125,41 @@ init();
 const limpiarMarcadores = function(){
     localStorage.clear('marcadoresRecetas');
 };
+
+export const enviarReceta =  async function(newReceta){
+
+    try{
+
+        const ingredientes = Object.entries(newReceta).filter(entry => entry[0].startsWith('ingredient') && entry[1] !== '')
+    .map(ing => {
+        const ingArr = ing[1].replaceAll(' ', '').split(',');
+        if (ingArr.length !== 3) throw new Error('El formato es incorrecto, intente nuevamente');
+
+        const [quantity, unit, description] = ingArr;
+        return { quantity: quantity ? +quantity : null , unit: unit , description};
+    } );
+
+    const receta = {
+        title: newReceta.title,
+        source_url: newReceta.sourceUrl,
+        image_url: newReceta.image,
+        publisher: newReceta.publisher,
+        cooking_time: newReceta.cookingTime,
+        servings: newReceta.servings,
+        ingredientes,
+    }
+
+    const data = await enviarJSON(`${API_URL}?key=${KEY}`, receta);
+    estado.receta = crearObjetoReceta(data);
+    marcarReceta(estado.receta);
+    console.log(data);
+
+    }catch (err){
+
+        throw err;
+        
+    };
+};
+
 
 

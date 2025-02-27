@@ -1,4 +1,5 @@
-import * as modelo from './modelo'
+import * as modelo from './modelo';
+import { MODAL_CLOSE_SEC } from './configuraciones';
 import vistaReceta from './vistas/vistaReceta'
 import vistaBusquedas from './vistas/vistaBusquedas';
 import vistaResultados from './vistas/vistaResultados';
@@ -37,7 +38,7 @@ const controladorRecetas = async function () {
     vistaReceta.render(modelo.estado.receta);
 
   } catch (err) {
-    vistaReceta.renderMensaje();
+    vistaReceta.renderMensaje(err);
   };
 
 };
@@ -76,22 +77,38 @@ const controlPorciones = function (newPorcion) {
 
 };
 
-const controlAgregarMarcarReceta = function(){
+const controlAgregarMarcarReceta = function () {
 
-  if(!modelo.estado.receta.marcador) modelo.marcarReceta(modelo.estado.receta);
+  if (!modelo.estado.receta.marcador) modelo.marcarReceta(modelo.estado.receta);
   else modelo.desmarcarReceta(modelo.estado.receta.id);
-  
+
   vistaReceta.actualizar(modelo.estado.receta);
-  
+
   vistaMarcadores.render(modelo.estado.marcadores);
 };
 
-const controlMarcadores = function(){
+const controlMarcadores = function () {
   vistaMarcadores.render(modelo.estado.marcadores);
 };
 
-const controlCrearReceta = function(newReceta){
-  console.log(newReceta);
+const controlCrearReceta = async function (newReceta) {
+  try {
+
+    vistaCrearReceta.renderSpinner();
+
+    await modelo.enviarReceta(newReceta);
+
+    vistaReceta.render(modelo.estado.receta);
+    vistaCrearReceta.renderMensaje();
+
+    setTimeout(function(){
+      vistaCrearReceta.toggleWindow();
+    }, MODAL_CLOSE_SEC * 1000);
+
+
+  } catch (err) {
+    vistaCrearReceta.renderError(err.message);
+  };
 
 };
 

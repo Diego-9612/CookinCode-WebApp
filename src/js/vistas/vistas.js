@@ -58,12 +58,28 @@ export default class Vistas {
         this._elementoPadre.insertAdjacentHTML('afterbegin', markup);
     };
 
+    renderError(mensaje = this._errorMensaje) {
+        const markup = `
+            <div class="message">
+                <div>
+                    <svg>
+                        <use href="${icons}#icon-alert-triangle"></use>
+                    </svg>
+                </div>
+                <p>${mensaje}</p>
+            </div>
+            `;
+
+        this._limpiar();
+        this._elementoPadre.insertAdjacentHTML('afterbegin', markup);
+    };
+
     renderMensaje(mensaje = this._mensaje) {
         const markup = `
             <div class="message">
                 <div>
                     <svg>
-                        <use href="${icons}#icon-smile"></use>
+                        <use href="${icons}#icon-alert-triangle"></use>
                     </svg>
                 </div>
                 <p>${mensaje}</p>
