@@ -2,6 +2,7 @@
   "name": "forkify",
   "version": "1.0.0",
   "description": "Aplicacion para control de recetas de restaurantes ",
+  "default": "index.html",
   "homepage": "https://github.com/Diego-9612/Forkify#readme",
   "bugs": {
     "url": "https://github.com/Diego-9612/Forkify/issues"
@@ -15,11 +16,12 @@
   "type": "commonjs",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html --dist-dir ./dist"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.13.3",
-    "parcel": "^2.13.3"
+    "parcel": "^2.13.3",
+    "svgo": "^3.3.2"
   },
   "dependencies": {
     "core-js": "^3.40.0",

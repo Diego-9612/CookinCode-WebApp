@@ -12,10 +12,11 @@ import 'regenerator-runtime/runtime';
 import vistaPaginacion from './vistas/vistaPaginacion';
 
 ///////////////////////////////////////
-
+/*
 if (modelo.hot) {
   modelo.hot.accept();
 }
+  */
 
 const controladorRecetas = async function () {
 
@@ -100,6 +101,9 @@ const controlCrearReceta = async function (newReceta) {
 
     vistaReceta.render(modelo.estado.receta);
     vistaCrearReceta.renderMensaje();
+
+    vistaMarcadores.render(modelo.estado.marcadores);
+    window.history.pushState(null, '', `#${modelo.estado.receta.id}`)
 
     setTimeout(function(){
       vistaCrearReceta.toggleWindow();

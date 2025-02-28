@@ -9,6 +9,35 @@ const timeout = function (s) {
     });
 };
 
+export const AJAX = async function (url, enviarReceta = undefined) {
+
+    try {
+
+        const solicitud = enviarReceta ? fetch(url, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(enviarReceta),
+        }) : fetch(url);
+
+        const respuesta = await Promise.race([solicitud, timeout(TIMEOUT_SEC)]);
+        const data = await respuesta.json();
+
+        if (!respuesta.ok) throw new Error(`${data.message} (${respuesta.status})`);
+
+        return data;
+
+    } catch {
+
+        throw err;
+
+    }
+
+};
+
+
+/*
 
 export const getJSON = async function (url) {
 
@@ -20,6 +49,8 @@ export const getJSON = async function (url) {
         if (!respuesta.ok) throw new Error(`${data.message} (${respuesta.status})`);
 
         return data;
+
+
 
     } catch (err) {
         throw err;
@@ -51,3 +82,4 @@ export const enviarJSON = async function (url, enviarReceta) {
     }
 
 }
+*/
