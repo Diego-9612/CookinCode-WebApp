@@ -12,10 +12,11 @@ import 'regenerator-runtime/runtime';
 import vistaPaginacion from './vistas/vistaPaginacion';
 
 ///////////////////////////////////////
-
+/*
 if (modelo.hot) {
   modelo.hot.accept();
 }
+*/ 
 
 const controladorRecetas = async function () {
 
