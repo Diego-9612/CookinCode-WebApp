@@ -46,14 +46,14 @@ class VistaReceta extends Vistas {
                     <use href="${icons}#icon-clock"></use>
                 </svg>
                 <span class="recipe__info-data recipe__info-data--minutes">${this._data.cookingTime}</span>
-                <span class="recipe__info-text">minutes</span>
+                <span class="recipe__info-text">minutos</span>
             </div>
             <div class="recipe__info">
                 <svg class="recipe__info-icon">
                     <use href="${icons}#icon-users"></use>
                 </svg>
                 <span class="recipe__info-data recipe__info-data--people">${this._data.servings}</span>
-                <span class="recipe__info-text">servings</span>
+                <span class="recipe__info-text">Porciones</span>
         
                 <div class="recipe__info-buttons">
                     <button class="btn--tiny btn--update-servings" data-update-to="${this._data.servings - 1}">
@@ -81,20 +81,20 @@ class VistaReceta extends Vistas {
         </div>
         
         <div class="recipe__ingredients">
-            <h2 class="heading--2">Recipe ingredients</h2>
+            <h2 class="heading--2">Ingredientes</h2>
             <ul class="recipe__ingredient-list">
             ${this._data.ingredients.map(this._generarMargenIngrediente).join('')}
             </ul>
         </div>
         
         <div class="recipe__directions">
-            <h2 class="heading--2">How to cook it</h2>
+            <h2 class="heading--2">Preparacion </h2>
             <p class="recipe__directions-text">
-            This recipe was carefully designed and tested by
-            <span class="recipe__publisher">${this._data.publisher}</span>. Please check out directions at their website.
+            Esta receta fue cuidadosamente diseñada y probada por
+            <span class="recipe__publisher">${this._data.publisher}</span>. Por favor consulta las instrucciones en su sitio web.
             </p>
             <a class="btn--small recipe__btn" href="http://thepioneerwoman.com/cooking/pasta-with-tomato-cream-sauce/" target="_blank">
-                <span>Directions</span>
+                <span>Consultar</span>
                 <svg class="search__icon">
                     <use href="${icons}#icon-arrow-right"></use>
                 </svg>

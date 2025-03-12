@@ -3,7 +3,7 @@
   border-radius: 10rem;
   border: none;
   text-transform: uppercase;
-  color: #fff;
+  color: #002242;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -56,11 +56,11 @@
 }
 
 .btn--inline {
-  color: $color-primary;
+  color: $color-grey-light-3;
   font-size: 1.3rem;
   font-weight: 600;
   border: none;
-  background-color: $color-grey-light-1;
+  background-color: $color-primary;
   padding: 0.8rem 1.2rem;
   border-radius: 10rem;
   cursor: pointer;
@@ -81,8 +81,8 @@
   }
 
   &:hover {
-    color: $color-grad-2;
-    background-color: $color-grey-light-2;
+    color: $color-primary;
+    background-color: $color-grey-light-3;
   }
 
   &:focus {

@@ -5,7 +5,7 @@ class VistaMarcadores extends Vistas {
 
     _elementoPadre = document.querySelector('.bookmarks__list');
     _mensajeError = 'No existen marcadores, busque una  receta y marquela ;)';
-    _mensaje = 'XXXXXXXXXXXXXXXXXXXX';
+    _mensaje = 'No existen marcadores, busque una  receta y marquela ;)';
 
     addHandlerRender(handler){
         window.addEventListener('load', handler);

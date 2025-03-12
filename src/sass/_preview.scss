@@ -11,12 +11,12 @@
     }
 
     &:hover {
-      background-color: $color-grey-light-1;
+      background-color: $color-primary;
       transform: translateY(-2px);
     }
 
     &--active {
-      background-color: $color-grey-light-1;
+      background-color: $color-primary;
     }
   }
 
@@ -42,7 +42,7 @@
         $color-grad-1,
         $color-grad-2
       );
-      opacity: 0.4;
+      opacity: 0.1;
     }
 
     img {
@@ -74,6 +74,12 @@
     max-width: 25rem;
     white-space: nowrap;
     overflow: hidden;
+
+    &:hover {
+      color: #B1EAEB;
+    }
+
+
   }
 
   &__publisher {
