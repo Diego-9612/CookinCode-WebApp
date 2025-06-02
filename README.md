@@ -1,87 +1,120 @@
-# Buscador de Recetas 🍕
+# 🍕 Forkify - Buscador de Recetas Inteligente
 
-Forkify es una aplicación web desarrollada en  con javascript, html y css, que permite buscar recetas, guardarlas como favoritas y añadir nuevas recetas personalizadas. Este proyecto reúne múltiples funcionalidades avanzadas para ofrecer una experiencia de usuario fluida e interactiva.
+**Forkify** es una aplicación web desarrollada con JavaScript, HTML y CSS que permite buscar recetas, guardarlas como favoritas y subir recetas personalizadas. Está diseñada para ofrecer una experiencia de usuario fluida, rápida e interactiva.
 
-## 📸 Vista Previa
-![image](https://github.com/user-attachments/assets/e8c665f5-d024-4f2e-a17c-f693c2d29167)
 ---
 
-## 🚀 Características
-- 🔍 **Búsqueda de recetas** a través de una API externa.
-- 📄 **Paginación** para navegar entre múltiples resultados.
-- 📋 **Visualización de recetas** con tiempo de cocción, porciones e ingredientes detallados.
-- ➖➕ **Actualización dinámica de ingredientes** según el número de porciones.
-- ⭐ **Guardado de recetas favoritas** en el almacenamiento local.
-- 📝 **Subida de recetas personalizadas**, visibles solo para el usuario que las crea.
-- 📌 **Persistencia de favoritos y recetas** incluso después de cerrar la aplicación.
+## 🚀 Características Principales
+
+* 🔍 **Búsqueda de recetas** mediante una API externa.
+* 📄 **Paginación** para navegar entre múltiples resultados.
+* 🍽️ **Visualización detallada de recetas** con ingredientes, porciones y tiempo de preparación.
+* ➖➕ **Actualización dinámica de ingredientes** según el número de porciones.
+* ⭐ **Guardado de recetas favoritas** usando `localStorage`.
+* 📝 **Subida de recetas personalizadas**, visibles localmente para el usuario.
+* ♻️ **Persistencia de datos** incluso al recargar o cerrar la aplicación.
+
+---
+
+## 🧱 Tecnologías Utilizadas
+
+* **JavaScript (ES6+)** - Lógica de la aplicación
+* **HTML5 y CSS3** - Estructura y diseño de la interfaz
+* **Parcel / Vite** - Empaquetador para desarrollo rápido
+* **Forkify API** - Fuente de datos externa
+* **localStorage API** - Almacenamiento persistente de favoritos
 
 ---
 
 ## 📂 Estructura del Proyecto
+
 ```
 Forkify/
 ├── public/            # Archivos estáticos
 ├── src/
-│   ├── components/    # Componentes reutilizables
-│   ├── pages/         # Páginas principales de la aplicación
-│   ├── hooks/         # Hooks personalizados
-│   ├── store/         # Gestión de estado
-│   ├── styles/        # Estilos con Tailwind CSS
-│   ├── App.jsx        # Componente principal
-│   ├── main.jsx       # Punto de entrada con Vite
-│   └── api.js         # Comunicación con la API externa
-├── .gitignore         # Archivos a ignorar en Git
-├── index.html         # Archivo base de la aplicación
-├── package.json       # Dependencias y configuración
-└── README.md          # Documentación del proyecto
+│   ├── views/         # Vistas de UI (MVC)
+│   ├── controllers/   # Lógica de control
+│   ├── model.js       # Modelo de datos y estado global
+│   ├── config.js      # Configuraciones generales (API, timeout, etc.)
+│   └── helpers.js     # Funciones reutilizables (fetch, formateo, etc.)
+├── index.html         # Archivo base
+├── style.css          # Estilos generales
+├── package.json       # Configuración del proyecto
+└── README.md          # Documentación
 ```
 
 ---
 
-## 🛠 Instalación y Configuración
-### 1️⃣ Clonar el repositorio
+## 🛠 Instalación y Ejecución Local
+
+1. Clona el repositorio:
+
 ```bash
 git clone https://github.com/tu-usuario/forkify.git
+cd forkify
 ```
 
-### 2️⃣ Instalar dependencias
+2. Instala las dependencias:
+
 ```bash
 npm install
 ```
 
-### 3️⃣ Iniciar el servidor de desarrollo
+3. Inicia el servidor de desarrollo:
+
 ```bash
 npm start
 ```
 
-La aplicación estará disponible en `http://localhost:1234/`.
+4. Accede a la app en tu navegador:
+
+```
+http://localhost:1234/
+```
+
+> Asegúrate de tener instalado Node.js (v14+ recomendado)
 
 ---
 
-## 🔗 API de Recetas
-Esta aplicación consume datos de la API de [Forkify](https://forkify-api.herokuapp.com/), permitiendo obtener información sobre miles de recetas.
+## 🔗 API Utilizada
 
-Para más información sobre los endpoints disponibles, visita la [documentación oficial](https://forkify-api.herokuapp.com/).
+Esta aplicación consume datos de la API de [Forkify](https://forkify-api.herokuapp.com/), que permite acceder a miles de recetas de cocina de diversas fuentes.
 
----
-
-## 📌 Tecnologías Utilizadas
-- **JavaScript** ⚛️ - Para la interfaz de usuario
-- **Node.js** ⚡ - Como entorno de desarrollo
-- **HTML, CSS** 🎨 - Para los estilos
-- **Redux Toolkit** 🗂 - Para la gestión del estado global
-- **Local Storage** 🗄 - Para almacenar recetas favoritas
-- **API Fetching** 🔗 - Para obtener datos dinámicamente
-
-## 📜 Licencia
-Este proyecto está bajo la licencia MIT. Puedes ver más detalles en el archivo `LICENSE`.
+Puedes explorar más en la [documentación oficial](https://forkify-api.herokuapp.com/).
 
 ---
 
-## 🎯 Autor
-Desarrollado con ❤️ por [Diego Guerrero - Codeweb Studio](https://github.com/Diego-9612).
+## 📸 Vista Previa
+
+![Vista Previa](https://github.com/user-attachments/assets/e8c665f5-d024-4f2e-a17c-f693c2d29167)
 
 ---
 
-¡Esperamos que disfrutes explorando y mejorando tus habilidades! 🚀
+## 🧩 Mejoras Futuras
+
+* Autenticación de usuarios y almacenamiento remoto de recetas
+* Favoritos sincronizados con el backend
+* Filtros por categoría, dificultad o tipo de dieta
+* Soporte para varios idiomas
+* Tests unitarios y de integración
+
+---
+
+## 📝 Licencia
+
+Este proyecto está bajo la licencia **MIT**. Consulta el archivo `LICENSE` para más información.
+
+---
+
+## 👨‍💻 Autor
+
+Desarrollado por [Diego Guerrero - Codeweb Studio](https://github.com/Diego-9612)
+
+* 💼 LinkedIn: [linkedin.com/in/diego-guerrero-dev](https://www.linkedin.com/in/diego-guerrero-dev)
+* 📧 Email: [diego.guerrero.dev@gmail.com](mailto:diego.guerrero.dev@gmail.com)
+
+---
+
+> Este proyecto fue creado como parte de una iniciativa para mejorar habilidades en desarrollo frontend, arquitectura MVC y consumo de APIs en JavaScript puro. 🚀
+
 
