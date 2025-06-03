@@ -1,6 +1,6 @@
-# 🍕 Forkify - Buscador de Recetas Inteligente
+# 🍕 Cookin'Code - Buscador de Recetas Inteligente
 
-**Forkify** es una aplicación web desarrollada con JavaScript, HTML y CSS que permite buscar recetas, guardarlas como favoritas y subir recetas personalizadas. Está diseñada para ofrecer una experiencia de usuario fluida, rápida e interactiva.
+**Cookin'Code** es una aplicación web desarrollada con JavaScript, HTML y CSS que permite buscar recetas, guardarlas como favoritas y subir recetas personalizadas. Está diseñada para ofrecer una experiencia de usuario fluida, rápida e interactiva.
 
 ---
 
@@ -20,9 +20,13 @@
 
 * **JavaScript (ES6+)** - Lógica de la aplicación
 * **HTML5 y CSS3** - Estructura y diseño de la interfaz
-* **Parcel / Vite** - Empaquetador para desarrollo rápido
+* **Node.js** - Empaquetador para desarrollo rápido
 * **Forkify API** - Fuente de datos externa
 * **localStorage API** - Almacenamiento persistente de favoritos
+
+## Diagrama 
+
+![forkify-flowchart-part-3](https://github.com/user-attachments/assets/ccdedba7-3ccb-4b35-bb4b-6799194a4132)
 
 ---
 
@@ -111,7 +115,7 @@ Este proyecto está bajo la licencia **MIT**. Consulta el archivo `LICENSE` para
 Desarrollado por [Diego Guerrero - Codeweb Studio](https://github.com/Diego-9612)
 
 * 💼 LinkedIn: [linkedin.com/in/diego-guerrero-dev](https://www.linkedin.com/in/diego-guerrero-dev)
-* 📧 Email: [diego.guerrero.dev@gmail.com](mailto:diego.guerrero.dev@gmail.com)
+* 📧 Email: [diego.guerrero.dev@gmail.com](mailto:diegoguerrero@umariana.edu.co)
 
 ---
 
