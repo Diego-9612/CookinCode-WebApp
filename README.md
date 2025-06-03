@@ -114,7 +114,7 @@ Este proyecto está bajo la licencia **MIT**. Consulta el archivo `LICENSE` para
 
 Desarrollado por [Diego Guerrero - Codeweb Studio](https://github.com/Diego-9612)
 
-* 💼 LinkedIn: [linkedin.com/in/diego-guerrero-dev](https://www.linkedin.com/in/diego-guerrero-dev)
+* 💼 LinkedIn: [linkedin.com](https://www.linkedin.com/in/diego-guerrero-software/)
 * 📧 Email: [diegoguerrero@umariana.edu.co](mailto:diegoguerrero@umariana.edu.co)
 
 ---
