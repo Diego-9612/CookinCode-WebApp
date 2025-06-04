@@ -14,6 +14,9 @@
 * 📝 **Subida de recetas personalizadas**, visibles localmente para el usuario.
 * ♻️ **Persistencia de datos** incluso al recargar o cerrar la aplicación.
 
+![Documento A4 infografía del negocio limpio profesional multicolor](https://github.com/user-attachments/assets/22271428-e763-45f5-a10c-35e6019ac573)
+
+
 ---
 
 ## 🧱 Tecnologías Utilizadas
